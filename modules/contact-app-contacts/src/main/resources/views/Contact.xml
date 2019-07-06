@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
+	<selection name="statetype">
+		<option value="1">Draft</option>
+		<option value="2">Complete</option>
+		<option value="3">Cancle</option>
+	</selection>
+	<form name="contact-form" title="Contact"
+		model="com.axelor.contact.db.Contact"
+		onLoad="action-contact-attr-set-check-onNew"
+		onNew="action-contact-attr-set-check-onNew"
+		onSave="action-contact-group-address">
+		<panel title="contact">
+			<field name="firstName" />
+			<field name="lastName" />
+			<field name="fullName" />
+			<field name="companyName" />
+			<field name="image" widget="image" />
+			<field name="marks"></field>
+			<field name="stateType" selection="statetype"></field>
+			<field name="priority"></field>
+			<field name="isTech"></field>
+		</panel>
+		<panel title="Department">
+			<field name="department" canNew="true"
+				domain="self.isTechanical=:isTech"></field>
+		</panel>
+		<panel>
+			<panel-dashlet action="phone.tree" />
+		</panel>
+		<panel-related field="phoneList" form-view="Phone-form"
+			grid-view="phone-grid" />
+		<panel title="address">
+			<field name="address">
+				<viewer>
+					<![CDATA[
+				
+				        CITYNAME={{record.cityName}}<br>
+				        STATENAME={{record.stateName}}<br>
+				       
+	        	   ]]>
+					<!-- <![CDATA[<a href="tel:{{record.address}}">{{record.address}}</a><span 
+						class="muted" ng-if="record.cityName">({{record.cityName}})</span>]]> -->
+				</viewer>
+				<editor>
+					<field name="cityName"></field>
+					<field name="stateName"></field>
+				</editor>
+			</field>
+		</panel>
+		<panel-related field="vehicleList"
+			form-view="Vehicle-form" grid-view="Vehicle-grid">
+		</panel-related>
+		<panel>
+			<button name="submit"
+				onClick="action-contact-method-buton-onclick-printdata" />
+		</panel>
+
+	</form>
+
+
+	<grid name="contact-grid" title="Contacts"
+		model="com.axelor.contact.db.Contact">
+		<toolbar>
+			<button name="submit" title="submit"
+				onClick="action-contact-method-buton-onclick-printdata" />
+		</toolbar>
+		<field name="fullName"></field>
+		<field name="address.cityName"></field>
+		<field name="address.stateName"></field>
+		<field name="phoneList.phoneNumber"></field>
+		<!-- <field name="phoneList.phoneType"></field> -->
+		<field name="vehicleList"></field>
+
+
+
+	</grid>
+
+	<cards name="contact-cards" title="Contacts Card"
+		model="com.axelor.contact.db.Contact" orderBy="fullName">
+		<field name="fullName" />
+		<field name="address.cityName"></field>
+		<field name="address.stateName"></field>
+		<field name="phoneList.phoneNumber"></field>
+		<field name="vehicleList"></field>
+		<template><![CDATA[
+  <div class="span4 card-image">
+    <img  ng-src="{{$image('customer', 'image')}}">
+       <strong>{{fullName}}</strong> 
+  </div>
+ 
+    <div class="span8">
+     <strong>{{address.cityName}} {{address.stateName}}</strong>
+      <abbr ng-if="phone" title="Phone">P:</abbr> {{phone}}<br>
+  </div>
+  ]]></template>
+	</cards>
+
+
+
+	<kanban name="project-task-kanban" title="Project Tasks"
+		model="com.axelor.contact.db.Contact" columnBy="stateType"
+		sequenceBy="priority">
+		<field name="fullName" />
+		<field name="address.cityName"></field>
+		<field name="address.stateName"></field>
+		<field name="phoneList.phoneNumber"></field>
+		<field name="vehicleList"></field>
+		<template><![CDATA[
+	  <div class="span4 kanban-image">
+    <img  ng-src="{{$image('customer', 'image')}}">
+       <strong>{{fullName}}</strong> 
+  </div>
+ 
+    <div class="span8">
+     <strong>{{address.cityName}} {{address.stateName}}</strong>
+      <abbr ng-if="phone" title="Phone">P:</abbr> {{phone}}<br>
+  </div>
+ 
+  ]]></template>
+	</kanban>
+
+
+
+	<!-- <chart name="chart.marks" title="Marks-of-Student"> -->
+	<!-- <search-fields> -->
+	<!-- <field type="datetime" name="fromDateTime" title="From Date" /> -->
+	<!-- <field type="datetime" name="toDateTime" title="To Date" /> -->
+	<!-- </search-fields> -->
+	<!-- <dataset type="jpql"> -->
+	<!-- <![CDATA[ -->
+	<!-- SELECT -->
+	<!-- s.marks -->
+	<!-- FROM -->
+	<!-- Contact s; -->
+	<!-- ]]> -->
+	<!-- </dataset> -->
+	<!-- <category key="marks" type="month" /> -->
+	<!-- <series key="year" type="bar" /> -->
+	<!-- <config name="colors" value="red,green" /> -->
+	<!-- </chart> -->
+
+	<tree name="contact-tree" title="Project Tasks">
+
+		<column name="name" type="string" />
+		<column name="phoneNum" type="string" />
+		<column name="phoneType" type="integer" />
+
+		<node model="com.axelor.contact.db.Contact">
+			<field name="fullName" as="name" />
+
+		</node>
+
+		<node model="com.axelor.contact.db.Phone" parent="contact"
+			draggable="true">
+			<field name="phoneNumber" as="phoneNum" />
+			<field name="phoneType" as="phoneType" />
+		</node>
+
+	</tree>
+	<action-attrs name="action-contact-attr-set-check-onNew">
+		<!-- <attribute name="domain" for="department" expr="eval:@quot;self.isTechanical=true 
+			@quot;" /> -->
+		<attribute name="value" for="companyName" expr="Axelor" />
+		<attribute name="readonly" for="companyName" expr="true" />
+		<attribute name="required" for="marks" expr="true" />
+	</action-attrs>
+	<!-- <action-attrs name="action-contact-attr-set-check-onNew"> -->
+	<!-- <attribute name="domain" for="department" expr="eval:@quot;self.isTechanical=true 
+		@quot;"/> -->
+	<!-- </action-attrs> -->
+
+
+	<action-method
+		name="action-contact-method-buton-onclick-printdata">
+		<call class="com.axelor.contact.web.ContactController"
+			method="printdata" />
+	</action-method>
+
+	<action-validate
+		name="action-contact-validate-on-priority">
+		<error message="priority is not negative" if=" priority &lt; 0" />
+	</action-validate>
+
+	<action-condition
+		name="action-contact-condition-on-priority">
+
+		<check field="priority" if="priority &lt; 0"
+			error="priority is not negative" />
+	</action-condition>
+
+	<action-group name="action-contact-group-action-on-form">
+		<action name="action-contact-condition-on-priority" />
+		<action name="action-contact-validate-on-StateType"/>
+	</action-group>
+	<action-attrs name="action-contact-group-address">
+	<attribute name="value" for="contact.cityName" expr="prashant"/></action-attrs>
+	
+</object-views>

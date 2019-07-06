@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.1.xsd">
+	<module name="contact" package="com.axelor.contact.db" />
+
+	<entity name="Contact">
+		<string name="firstName" />
+		<string name="lastName" />
+		<string name="fullName" namecolumn="true" search="firstName,lastName"><![CDATA[
+		    if (firstName == null && lastName == null)
+		      return null;
+		   else
+		        return firstName + " " + lastName;
+    ]]></string>
+		<integer name="marks"></integer>
+		<integer name="priority"></integer>
+		<integer name="stateType" selection="statetype" />
+		<binary name="image" title="Photo" help="Max size 4MB." image="true" />
+		<string name="companyName"></string>
+		<boolean name="isTech" default="true"></boolean>
+
+		<one-to-one name="address" ref="Address" />
+		<one-to-many name="phoneList" ref="Phone" mappedBy="contact" />
+		<many-to-many name="vehicleList" ref="Vehicle" />
+		<many-to-one name="department" ref="Department"></many-to-one>
+		<extra-code>
+	<![CDATA[
+		public static final int CONTACT_TYPE_CANCLE =3;
+		public static final int CONTACT_TYPE_COMPLETE =2;
+		public static final int CONTACT_TYPE_DRAFT =1;
+	]]>
+	</extra-code>
+	</entity>
+
+
+</domain-models>
