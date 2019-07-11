@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<csv-inputs xmlns="http://axelor.com/xml/ns/data-import"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/data-import
+    http://axelor.com/xml/ns/data-import/data-import_5.1.xsd">
+
+	<input file="contact.csv" type="com.axelor.contact.db.Contact"
+		update="false">
+		<bind to="firstName" column="first_name" />
+		<bind to="lastName" column="last_name" />
+		<bind to="fullName" column="full_name" />
+		<bind to="address" update="false">
+			<bind to="cityName" column="city_name"></bind>
+			<bind to="stateName" column="state_name"></bind>
+		</bind>
+		<bind to="phoneList" update="false">
+			<bind to="phoneNumber" column="phone_number"></bind>
+		
+		</bind>
+	</input>
+</csv-inputs> 

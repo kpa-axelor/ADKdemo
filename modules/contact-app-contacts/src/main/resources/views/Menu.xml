@@ -20,5 +20,12 @@
 	<action-view name="phone.tree" title="phonetree" model="com.axelor.contact.db.Contact">
 	 <view type="tree" name="contact-tree"/>
 	</action-view>
+	
+	<menuitem title="Price"  name="ment-price" parent="menu-contact-book" action="price.all"/>
+	<action-view name="price.all" title="Price" model="com.axelor.contact.db.Price">
+	<view type="form" name="Price-form"/>
+	<view type="grid" name="price-grid"/>
+	</action-view>
+	
 
 </object-views>

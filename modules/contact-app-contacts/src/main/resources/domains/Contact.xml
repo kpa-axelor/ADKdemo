@@ -15,10 +15,11 @@
 		<integer name="marks"></integer>
 		<integer name="priority"></integer>
 		<integer name="stateType" selection="statetype" />
-		<binary name="image" title="Photo" help="Max size 4MB." image="true" />
+<!-- 		<binary name="image" title="Photo" help="Max size 4MB." image="true" /> -->
+		<many-to-one name="image" title="Photo" ref="com.axelor.meta.db.MetaFile" />
 		<string name="companyName"></string>
 		<boolean name="isTech" default="true"></boolean>
-
+		<one-to-one ref="Email" name="email"></one-to-one>
 		<one-to-one name="address" ref="Address" />
 		<one-to-many name="phoneList" ref="Phone" mappedBy="contact" />
 		<many-to-many name="vehicleList" ref="Vehicle" />

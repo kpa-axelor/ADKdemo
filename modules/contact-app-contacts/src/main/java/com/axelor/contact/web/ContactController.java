@@ -1,5 +1,18 @@
 package com.axelor.contact.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.hibernate.mapping.Set;
+
+import com.axelor.app.AppSettings;
+import com.axelor.contact.db.Contact;
+import com.axelor.contact.db.Price;
+import com.axelor.inject.Beans;
 import com.axelor.rpc.ActionRequest;
 import com.axelor.rpc.ActionResponse;
 
@@ -8,10 +21,58 @@ public class ContactController {
 	
 	public void printdata(ActionRequest request, ActionResponse response)
 	{
-		System.out.print("hellloooooooo");
-		System.out.println(request.getContext().entrySet());
-		response.setValue("priority", 53);
+		Price price = request.getContext().asType(Price.class);
+		System.out.println(price.getPrice());
+		System.out.println(price.getQuantity());
+		
+//		System.out.println(request.getContext().entrySet());
+//		Map map = new HashMap();
+//		Set set = (Set) request.getContext().entrySet();
+//		 Iterator itr = ((java.util.Set<Entry<String, Object>>) set).iterator(); 
+//		 while(itr.hasNext())
+//		 {
+//			 Map.Entry entry = (Map.Entry)itr.next();
+//			 System.out.println(entry.getKey()+" "+entry.getValue());
+//		 }
+		
+		 
+		response.setValue("totalAmount", (price.getPrice()*price.getQuantity()));
 	}
 	
-
+	public void reportvalue(ActionRequest request, ActionResponse response)
+	{
+		System.out.println(request.getContext().get("_ids"));
+		List<Integer> list = (List<Integer>) request.getContext().get("_ids");
+		System.out.println(list);
+		String s1 ="";
+		for(int i=0;i<list.size();i++)
+		{
+				s1 = s1 + list.get(i)+",";			
+		}
+		String s = (String) s1.subSequence(0, s1.length()-1);
+		System.out.println("string="+s);
+		
+		 String filePath = AppSettings.get().get("file.upload.dir");
+		 System.out.println("filePath="+filePath);
+		 System.out.println("file put="+request.getContext().put("photoPath",filePath));
+		 System.out.println(request.getContext().get("photoPath"));
+//		Object[] ol =  list.toArray();
+//		System.out.println("ArrayObj length ="+ol.length);
+		System.err.println("req class == >"+request.getContext().put("contactId", s));
+		System.out.println(request.getContext().get("contactId"));
+	}
+	public void formValue(ActionRequest request , ActionResponse response)
+	{
+		System.out.println("form value"+request.getContext().entrySet());
+		System.out.println(request.getContext().get("id"));
+		Long i = (Long) request.getContext().get("id");
+		String s=i.toString(i);
+		request.getContext().put("contactId",s);		
+		 String filePath = AppSettings.get().get("file.upload.dir");
+		 System.out.println("filePath="+filePath);
+		 System.out.println("file put="+request.getContext().put("photoPath",filePath));
+		 System.out.println(request.getContext().get("photoPath"));
+			
+	}
+	
 }

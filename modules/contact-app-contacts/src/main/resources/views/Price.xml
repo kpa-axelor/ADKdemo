@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
+
+
+	<form model="com.axelor.contact.db.Price" title="Price"
+		name="Price-form">
+		<field name="price" />
+		<field name="quantity" />
+		<button name="submit"
+			onClick="action-contact-method-buton-onclick-total-amount" />
+		<field name="totalAmount" ></field>
+	</form>
+	<grid model="com.axelor.contact.db.Price" title="Price"
+		name="Price-grid">
+		<field name="price" />
+		<field name="quantity" />
+		<field name="totalAmount" ></field>
+	</grid>
+
+	<action-method
+		name="action-contact-method-buton-onclick-total-amount">
+		<call class="com.axelor.contact.web.ContactController"
+			method="printdata" />
+	</action-method>
+</object-views>
