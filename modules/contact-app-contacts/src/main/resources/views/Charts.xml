@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
+  http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
+
+	<chart name="chart-salary" title="Salary">
+		<dataset type="sql"> 
+  <![CDATA[
+  SELECT
+  	full_name,
+	SUM(salary) as salary
+  FROM
+  	contact_contact 
+  GROUP BY 
+  	full_name	
+  ]]>
+  </dataset>
+		<category key="salary" />
+		<series key="salary" groupBy="full_name" type="bar" />
+		  <config name="colors" value="red,yellow,green" />
+
+	</chart>
+
+
+	<chart name="chart-salary-pie" title="Salary">
+		<dataset type="sql"> 
+  <![CDATA[
+  SELECT
+	AVG(salary) as salary
+  FROM
+  	contact_contact 	
+  ]]>
+  </dataset>
+		<category key="salary" type="number" />
+		<series key="salary" type="gauge" />
+		  <config name="min" value="0"/>
+    	<config name="max" value="10"/>
+	</chart>
+</object-views>

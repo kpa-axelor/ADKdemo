@@ -10,22 +10,24 @@
 	<action-view name="contact.all" title="Contacts" model="com.axelor.contact.db.Contact">
 		<view type="grid" name="contact-grid" />
 		<view type="form" name="contact-form" />
-		<view type="cards" name="contact-cards"/>
-		<view type="kanban" name="project-task-kanban"/>
-		  
-		 
-		  <view-param name="details-view" value="true" /> 
-		
+		<view type="cards" name="contact-cards" />
+		<view type="kanban" name="project-task-kanban" />
+		<view-param name="details-view" value="true" />
 	</action-view>
+	<menuitem name="menu-charts" parent="menu-contact-book" title="All Charts" action="charts.all" />
+	<action-view name="charts.all" title="charts" model="com.axelor.contact.db.Contact">
+		<view type="chart" name="chart-salary" />
+	</action-view>
+
 	<action-view name="phone.tree" title="phonetree" model="com.axelor.contact.db.Contact">
-	 <view type="tree" name="contact-tree"/>
+		<view type="tree" name="contact-tree" />
 	</action-view>
-	
-	<menuitem title="Price"  name="ment-price" parent="menu-contact-book" action="price.all"/>
+
+	<menuitem title="Price" name="ment-price" parent="menu-contact-book" action="price.all" />
 	<action-view name="price.all" title="Price" model="com.axelor.contact.db.Price">
-	<view type="form" name="Price-form"/>
-	<view type="grid" name="price-grid"/>
+		<view type="form" name="Price-form" />
+		<view type="grid" name="price-grid" />
 	</action-view>
-	
+
 
 </object-views>

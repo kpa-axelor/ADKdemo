@@ -9,14 +9,13 @@
 		<option value="3">Cancle</option>
 	</selection>
 
-
 	<form name="contact-form" title="Contact" model="com.axelor.contact.db.Contact" onLoad="action-contact-attr-set-check-onNew"
 		onNew="action-contact-attr-set-check-onNew">
 		<toolbar>
-			<button name="report" title="report" onClick="action-contact-group-action-on-form-report-form" />
+			<button name="report" title="report" onClick="action-contact-group-action-on-form-report" />
 		</toolbar>
 		<panel title="email">
-			<field name="email" form-view="Email-form" grid-view="Email-grid" canNew="true"></field>
+			<field name="email" form-view="Email-form" grid-view="Email-grid" canNew="true" title="NewEmail"></field>
 		</panel>
 		<panel title="contact">
 			<field name="firstName" />
@@ -28,6 +27,7 @@
 			<field name="stateType" selection="statetype"></field>
 			<field name="priority" onChange="action-contact-validate-on-priority"></field>
 			<field name="isTech" showIf="priority > 10"></field>
+			<field name="salary"></field>
 		</panel>
 
 		<panel title="Department">
@@ -58,7 +58,7 @@
 		<panel-related field="vehicleList" form-view="Vehicle-form" grid-view="Vehicle-grid">
 		</panel-related>
 		<panel>
-			<button name="submit" onClick="action-contact-method-buton-onclick-printdata" />
+			<button name="submit" onClick="action-contact-method-buton-onclick-printdata" title="Submit" />
 		</panel>
 
 	</form>
@@ -74,9 +74,7 @@
 		<field name="phoneList.phoneNumber"></field>
 		<!-- <field name="phoneList.phoneType"></field> -->
 		<field name="vehicleList"></field>
-
-
-
+		<field name="salary"></field>
 	</grid>
 
 	<cards name="contact-cards" title="Contacts Card" model="com.axelor.contact.db.Contact" orderBy="fullName">
@@ -192,31 +190,31 @@
 	<!-- <attribute name="value" for="contact.cityName" expr="prashant"/></action-attrs> -->
 
 	<action-group name="action-contact-group-action-on-form-report">
-		<action name="action-contact-method-buton-onclick-printdata-report"  />
+		<action name="action-contact-method-buton-onclick-printdata-report" />
 		<action name="action-report-invoice" />
 	</action-group>
 
-	<action-group name="action-contact-group-action-on-form-report-form">
-		<action name="check-pass-value-by-form" />
-		<action name="action-report-invoice" />
-	</action-group>
+	<!-- <action-group name="action-contact-group-action-on-form-report-form"> -->
+	<!-- <action name="check-pass-value-by-form" /> -->
+	<!-- <action name="action-report-invoice" /> -->
+	<!-- </action-group> -->
 
-	<action-method name="check-pass-value-by-form">
-		<call class="com.axelor.contact.web.ContactController" method="formValue" />
-	</action-method>
+	<!-- <action-method name="check-pass-value-by-form"> -->
+	<!-- <call class="com.axelor.contact.web.ContactController" method="formValue" /> -->
+	<!-- </action-method> -->
 
 	<action-method name="action-contact-method-buton-onclick-printdata-report">
 		<call class="com.axelor.contact.web.ContactController" method="reportvalue" />
 	</action-method>
 
 	<action-report name="action-report-invoice" design="ContactReport.rptdesign" output="invoice-${date}${time}" format="pdf">
-		<param name="Ids" expr="eval:contactId" />
+		<param name="Ids" expr="eval: contactId" />
 		<param name="Photo" expr="eval: photoPath" />
 	</action-report>
 
-<!-- 	<action-report output="invoice-${date}${time}" name="action-report-invoice-form" design="ContactReport.rptdesign" format="pdf"> -->
-<!-- 		<param name="Ids" expr="eval:formId" /> -->
-<!-- 		<param name="Photo" expr="eval: photoPath1" /> -->
-<!-- 	</action-report> -->
+	<!-- <action-report output="invoice-${date}${time}" name="action-report-invoice-form" design="ContactReport.rptdesign" format="pdf"> -->
+	<!-- <param name="Ids" expr="eval:formId" /> -->
+	<!-- <param name="Photo" expr="eval: photoPath1" /> -->
+	<!-- </action-report> -->
 
 </object-views>

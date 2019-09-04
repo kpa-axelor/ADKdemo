@@ -12,6 +12,7 @@
 		   else
 		        return firstName + " " + lastName;
     ]]></string>
+   		 <integer name="salary"></integer>
 		<integer name="marks"></integer>
 		<integer name="priority"></integer>
 		<integer name="stateType" selection="statetype" />

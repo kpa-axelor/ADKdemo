@@ -1,0 +1,79 @@
+"key","message","comment","context"
+"Address","fr_add",,"resources/domains/Contact.xml:24
+resources/views/Address.xml:5"
+"All Charts",,,"resources/views/Menu.xml:17"
+"All Contact",,,"resources/views/Menu.xml:8"
+"Cancle",,,"resources/views/Contact.xml:9"
+"City name",,,"resources/domains/Address.xml:9"
+"Company name",,,"resources/domains/Contact.xml:21"
+"Complete",,,"resources/views/Contact.xml:8"
+"Contact",,,"resources/domains/phone.xml:10
+resources/views/Contact.xml:13"
+"Contact Book",,,"resources/views/Menu.xml:6"
+"Contacts",,,"resources/views/Contact.xml:67
+resources/views/Menu.xml:10"
+"Contacts Card",,,"resources/views/Contact.xml:80"
+"Dashboards",,,"resources/views/welcome.xml:18"
+"Department",,,"resources/domains/Contact.xml:27
+resources/views/Contact.xml:33
+resources/views/Department.xml:5
+resources/views/Department.xml:9"
+"Department name",,,"resources/domains/Department.xml:7"
+"Draft",,,"resources/views/Contact.xml:7"
+"Email",,,"resources/domains/Contact.xml:23
+resources/domains/Email.xml:8
+resources/views/Email.xml:5
+resources/views/Email.xml:8"
+"First name",,,"resources/domains/Contact.xml:7"
+"Full name",,,"resources/domains/Contact.xml:9
+resources/views/Tree.xml:7"
+"Home",,,"resources/views/Phone.xml:8"
+"Is tech",,,"resources/domains/Contact.xml:22"
+"Is techanical",,,"resources/domains/Department.xml:6"
+"Last name",,,"resources/domains/Contact.xml:8"
+"Marks",,,"resources/domains/Contact.xml:16"
+"Name",,,"resources/views/Contact.xml:143"
+"NewEmail",,,"resources/views/Contact.xml:18"
+"Office",,,"resources/views/Phone.xml:7"
+"Personal",,,"resources/views/Phone.xml:6"
+"Phone",,,"resources/views/Phone.xml:10
+resources/views/Phone.xml:17"
+"Phone list",,,"resources/domains/Contact.xml:25"
+"Phone num",,,"resources/views/Contact.xml:144"
+"Phone number",,,"resources/domains/phone.xml:8"
+"Phone type",,,"resources/domains/phone.xml:9
+resources/views/Contact.xml:145"
+"Photo",,,"resources/domains/Contact.xml:20"
+"Price",,,"resources/domains/Price.xml:9
+resources/views/Menu.xml:26
+resources/views/Menu.xml:27
+resources/views/Price.xml:17
+resources/views/Price.xml:9"
+"Priority",,,"resources/domains/Contact.xml:17"
+"Project Tasks",,,"resources/views/Contact.xml:101
+resources/views/Contact.xml:141"
+"Quantity",,,"resources/domains/Price.xml:10"
+"Salary",,,"resources/domains/Contact.xml:15
+resources/views/Charts.xml:25
+resources/views/Charts.xml:6"
+"State name",,,"resources/domains/Address.xml:10"
+"State type",,,"resources/domains/Contact.xml:18"
+"Submit",,,"resources/views/Contact.xml:61"
+"Total amount",,,"resources/domains/Price.xml:11"
+"Vehicle",,,"resources/views/Vehicle.xml:5
+resources/views/Vehicle.xml:8"
+"Vehicle list",,,"resources/domains/Contact.xml:26"
+"Vehicle name",,,"resources/domains/Vehicle.xml:7"
+"Welcome!",,,"resources/views/welcome.xml:13
+resources/views/welcome.xml:21
+resources/views/welcome.xml:6"
+"address",,,"resources/views/Contact.xml:41"
+"charts",,,"resources/views/Menu.xml:18"
+"contact",,,"resources/views/Contact.xml:20"
+"contactTree",,,"resources/views/Tree.xml:6"
+"email",,,"resources/views/Contact.xml:17"
+"enter positive number",,,"resources/views/Contact.xml:176"
+"phonetree",,,"resources/views/Menu.xml:22"
+"priority is not negative",,,"resources/views/Contact.xml:182"
+"report","fr_report",,"resources/views/Contact.xml:15"
+"submit","fr_submit",,"resources/views/Contact.xml:69"

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<object-views xmlns="http://axelor.com/xml/ns/object-views"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://axelor.com/xml/ns/object-views
   http://axelor.com/xml/ns/object-views/object-views_4.0.xsd">
 	<selection name="phonetype">
@@ -8,16 +7,14 @@
 		<option value="2">Office</option>
 		<option value="3">Home</option>
 	</selection>
-	<form model="com.axelor.contact.db.Phone" title="Phone"
-		name="Phone-form">
+	<form model="com.axelor.contact.db.Phone" title="Phone" name="Phone-form">
 		<field name="contact.fullName"></field>
 		<field name="phoneNumber"></field>
 		<field name="phoneType" selection="phonetype">
 
 		</field>
 	</form>
-	<grid model="com.axelor.contact.db.Phone" title="Phone"
-		name="phone-grid">
+	<grid model="com.axelor.contact.db.Phone" title="Phone" name="phone-grid">
 		<field name="phoneNumber"></field>
 		<field name="phoneType" selection="phonetype" />
 		<field name="contact.fullName"></field>
